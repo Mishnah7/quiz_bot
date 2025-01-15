@@ -301,6 +301,10 @@ async def all_users_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     ensure_user_in_db(user)
     lang = get_user_language(user.id)
     
+    # Debug logging for admin ID
+    logging.info(f"User ID: {user.id}, Type: {type(user.id)}")
+    logging.info(f"Admin ID: {YOUR_ADMIN_ID}, Type: {type(YOUR_ADMIN_ID)}")
+    
     # Only admin can see all users
     if user.id != YOUR_ADMIN_ID:
         await update.message.reply_text(
