@@ -1,0 +1,11 @@
+[33mcommit 88f4aa03c56eb41eba4d9b1bd2b059c12b047d63[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m, [m[1;31morigin/main[m[33m)[m
+Author: realloc <dagmawyasfaw@gmail.com>
+Date:   Wed Jan 15 14:06:05 2025 +0300
+
+    Remove hardcoded admin ID from constants.py
+
+[33mcommit 3472489a4f658d44fab8a3fae7c2edee95810a4b[m
+Author: realloc <dagmawyasfaw@gmail.com>
+Date:   Wed Jan 15 13:53:11 2025 +0300
+
+    Reset project history with protected sensitive information
