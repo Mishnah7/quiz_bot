@@ -410,6 +410,7 @@ def setup_handlers(application):
     application.add_handler(CommandHandler("schedule_quiz", schedule_quiz_command))
     application.add_handler(CommandHandler("stop_schedule", stop_schedule_command))
     application.add_handler(CommandHandler("all_users", all_users_command))
+    application.add_handler(CommandHandler("myquizzes", my_quizzes_command))
     application.add_handler(CommandHandler("my_quizzes", my_quizzes_command))
     application.add_handler(CommandHandler("score_history", score_history_command))
     application.add_handler(CallbackQueryHandler(callback_query_handler))
