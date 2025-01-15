@@ -13,5 +13,8 @@ ADMIN_ID = os.getenv("ADMIN_ID")
 if not ADMIN_ID:
     raise ValueError("No ADMIN_ID found in environment variables")
 
+# Alias for backward compatibility
+YOUR_ADMIN_ID = ADMIN_ID
+
 DB_NAME = 'quiz_bot.db'
 LANGUAGES = {'en': 'English', 'es': 'Español', 'fr': 'Français'} 
