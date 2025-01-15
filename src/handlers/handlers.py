@@ -340,6 +340,8 @@ async def my_quizzes_command(update: Update, context: ContextTypes.DEFAULT_TYPE)
     ensure_user_in_db(user)
     lang = get_user_language(user.id)
     
+    logging.info(f"Fetching quizzes for user {user.id}")
+    
     with sqlite3.connect(DB_NAME) as conn:
         c = conn.cursor()
         c.execute("""
@@ -351,7 +353,10 @@ async def my_quizzes_command(update: Update, context: ContextTypes.DEFAULT_TYPE)
         """, (user.id,))
         quizzes = c.fetchall()
     
+    logging.info(f"Found {len(quizzes)} quizzes for user {user.id}")
+    
     if not quizzes:
+        logging.warning(f"No quizzes found for user {user.id}")
         await update.message.reply_text(
             translate_text("You haven't taken any quizzes yet!", lang)
         )

@@ -24,6 +24,12 @@ def setup_db():
                 created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
             )
         """)
+        
+        # Check if difficulty column exists, if not, alter the table
+        c.execute("PRAGMA table_info(quizzes)")
+        columns = c.fetchall()
+        column_names = [column[1] for column in columns]
+        
         c.execute("""
             CREATE TABLE IF NOT EXISTS quizzes (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -37,6 +43,18 @@ def setup_db():
                 FOREIGN KEY (user_id) REFERENCES users (id)
             )
         """)
+        
+        # If difficulty column is missing, try to add it
+        if 'difficulty' not in column_names:
+            try:
+                c.execute("""
+                    ALTER TABLE quizzes 
+                    ADD COLUMN difficulty TEXT
+                """)
+            except sqlite3.OperationalError:
+                # Column might already exist
+                pass
+        
         c.execute("""
             CREATE TABLE IF NOT EXISTS user_audit (
                 id INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -124,10 +142,24 @@ def log_quiz_attempt(user_id, question, answer, quiz_type, difficulty):
     try:
         with sqlite3.connect(DB_NAME) as conn:
             c = conn.cursor()
+            
+            # Ensure all parameters are strings
+            question = str(question)
+            answer = str(answer)
+            quiz_type = str(quiz_type or 'General')
+            difficulty = str(difficulty or 'unknown')
+            
             c.execute("""
-                INSERT INTO quizzes (user_id, question, answer, quiz_type, difficulty)
-                VALUES (?, ?, ?, ?, ?)
+                INSERT INTO quizzes (user_id, question, answer, quiz_type, difficulty, created_at)
+                VALUES (?, ?, ?, ?, ?, datetime('now'))
             """, (user_id, question, answer, quiz_type, difficulty))
             conn.commit()
+            logging.info(f"Quiz attempt logged for user {user_id}")
     except sqlite3.Error as e:
-        logging.error(f"Database error in log_quiz_attempt: {e}") 
+        logging.error(f"Database error in log_quiz_attempt: {e}")
+        logging.error(f"Failed to log quiz attempt details:")
+        logging.error(f"User ID: {user_id}")
+        logging.error(f"Question: {question}")
+        logging.error(f"Answer: {answer}")
+        logging.error(f"Quiz Type: {quiz_type}")
+        logging.error(f"Difficulty: {difficulty}") 
