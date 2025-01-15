@@ -9,6 +9,9 @@ TOKEN = os.getenv("BOT_TOKEN")
 if not TOKEN:
     raise ValueError("No BOT_TOKEN found in environment variables")
 
+ADMIN_ID = os.getenv("ADMIN_ID")
+if not ADMIN_ID:
+    raise ValueError("No ADMIN_ID found in environment variables")
+
 DB_NAME = 'quiz_bot.db'
-LANGUAGES = {'en': 'English', 'es': 'Español', 'fr': 'Français'}
-YOUR_ADMIN_ID = 332948906  # Replace with your actual admin user ID 
+LANGUAGES = {'en': 'English', 'es': 'Español', 'fr': 'Français'} 
