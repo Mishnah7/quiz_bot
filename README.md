@@ -1,9 +1,11 @@
 # 🤖 Quiz Bot - Telegram Trivia Challenge
 
 ## Overview
+
 Quiz Bot is an interactive Telegram bot that offers an engaging trivia experience with multiple difficulty levels, multilingual support, and score tracking.
 
 ## 🌟 Features
+
 - Multiple difficulty levels (Easy, Medium, Hard)
 - Multilingual support
 - Real-time scoring system
@@ -12,30 +14,36 @@ Quiz Bot is an interactive Telegram bot that offers an engaging trivia experienc
 - User profile and history tracking
 
 ## 🚀 Prerequisites
+
 - Python 3.8+
 - Telegram Bot Token
 
 ## 🔧 Installation
 
 ### 1. Clone the Repository
+
 ```bash
 git clone https://github.com/yourusername/quiz-bot.git
 cd quiz-bot
 ```
 
 ### 2. Create Virtual Environment
+
 ```bash
 python -m venv venv
 source venv/bin/activate  # On Windows use `venv\Scripts\activate`
 ```
 
 ### 3. Install Dependencies
+
 ```bash
 pip install -r requirements.txt
 ```
 
 ### 4. Configure Bot Token
+
 Create a `.env` file in the project root:
+
 ```
 BOT_TOKEN=your_telegram_bot_token_here
 ```
@@ -43,11 +51,13 @@ BOT_TOKEN=your_telegram_bot_token_here
 ## 🎮 Usage
 
 ### Running the Bot
+
 ```bash
 python -m src.core.bot
 ```
 
 ### Available Commands
+
 - `/start` - Initialize or reset your profile
 - `/quiz` - Choose quiz difficulty and start
 - `/leaderboard` - See top scorers
@@ -59,6 +69,7 @@ python -m src.core.bot
 - `/help` - Show help message
 
 ## 🛠 Technologies
+
 - Python
 - Telegram Bot API
 - SQLite
@@ -66,6 +77,7 @@ python -m src.core.bot
 - Deep Translator
 
 ## 📦 Project Structure
+
 ```
 quiz-bot/
 │
@@ -88,6 +100,7 @@ quiz-bot/
 ```
 
 ## 🤝 Contributing
+
 1. Fork the repository
 2. Create your feature branch (`git checkout -b feature/AmazingFeature`)
 3. Commit your changes (`git commit -m 'Add some AmazingFeature'`)
@@ -95,9 +108,11 @@ quiz-bot/
 5. Open a Pull Request
 
 ## 📄 License
+
 Distributed under the MIT License. See `LICENSE` for more information.
 
 ## 📞 Contact
-Your Name - [Your Email]
 
-Project Link: [https://github.com/yourusername/quiz-bot](https://github.com/yourusername/quiz-bot) 
+Your Name - [realloC]
+
+Project Link: [https://github.com/yourusername/quiz-bot](https://github.com/yourusername/quiz-bot)
